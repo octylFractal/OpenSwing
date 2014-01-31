@@ -129,28 +129,33 @@ public class OpenGLGraphics extends Graphics2D {
 
     @Override
     public void setComposite(Composite comp) {
+        graphics.setComposite(comp);
         update_gl();
     }
 
     @Override
     public void setPaint(Paint paint) {
+        graphics.setPaint(paint);
         update_gl();
     }
 
     @Override
     public void setStroke(Stroke s) {
+        graphics.setStroke(s);
         update_gl();
     }
 
     @Override
     public void setRenderingHint(Key hintKey, Object hintValue) {
+        graphics.setRenderingHint(hintKey, hintValue);
         update_gl();
     }
 
     @Override
     public Object getRenderingHint(Key hintKey) {
+        Object hint = graphics.getRenderingHint(hintKey);
         update_gl();
-        return null;
+        return hint;
     }
 
     @Override
