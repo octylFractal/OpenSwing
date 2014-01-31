@@ -1,0 +1,12 @@
+*.class
+
+# Eclipse #
+.metadata
+\bin
+# Package Files #
+*.war
+*.ear
+
+# Python Compiled Files #
+
+*.pyc
