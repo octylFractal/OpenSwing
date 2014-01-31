@@ -10,3 +10,4 @@
 # Python Compiled Files #
 
 *.pyc
+/bin
