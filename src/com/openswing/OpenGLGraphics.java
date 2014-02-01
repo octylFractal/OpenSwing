@@ -45,6 +45,16 @@ public class OpenGLGraphics extends Graphics2D {
         update_gl();
     }
 
+    private OpenGLGraphics(OpenGLGraphics copy) {
+        int width = copy.swingData.getWidth(), height = copy.swingData
+                .getHeight();
+        swingData = new BufferedImage(width, height, copy.swingData.getType());
+        graphics = swingData.createGraphics();
+        renderer = Shapes.getQuad(new VertexData().setXYZ(0, height, 0),
+                new VertexData().setXYZ(width, 0, 0), Shapes.XY);
+        drawImage(copy.swingData, 0, 0, null);
+    }
+
     @Override
     public void draw(Shape s) {
         graphics.draw(s);
@@ -160,120 +170,140 @@ public class OpenGLGraphics extends Graphics2D {
 
     @Override
     public void setRenderingHints(Map<?, ?> hints) {
+        graphics.setRenderingHints(hints);
         update_gl();
     }
 
     @Override
     public void addRenderingHints(Map<?, ?> hints) {
+        graphics.addRenderingHints(hints);
         update_gl();
     }
 
     @Override
     public RenderingHints getRenderingHints() {
+        RenderingHints hints = graphics.getRenderingHints();
         update_gl();
-        return null;
+        return hints;
     }
 
     @Override
     public void translate(int x, int y) {
+        graphics.translate(x, y);
         update_gl();
     }
 
     @Override
     public void translate(double tx, double ty) {
+        graphics.translate(tx, ty);
         update_gl();
     }
 
     @Override
     public void rotate(double theta) {
+        graphics.rotate(theta);
         update_gl();
     }
 
     @Override
     public void rotate(double theta, double x, double y) {
+        graphics.rotate(theta, x, y);
         update_gl();
     }
 
     @Override
     public void scale(double sx, double sy) {
+        graphics.scale(sx, sy);
         update_gl();
     }
 
     @Override
     public void shear(double shx, double shy) {
+        graphics.shear(shx, shy);
         update_gl();
     }
 
     @Override
     public void transform(AffineTransform Tx) {
+        graphics.transform(Tx);
         update_gl();
     }
 
     @Override
     public void setTransform(AffineTransform Tx) {
+        graphics.setTransform(Tx);
         update_gl();
     }
 
     @Override
     public AffineTransform getTransform() {
+        AffineTransform t = graphics.getTransform();
         update_gl();
-        return null;
+        return t;
     }
 
     @Override
     public Paint getPaint() {
+        Paint p = graphics.getPaint();
         update_gl();
-        return null;
+        return p;
     }
 
     @Override
     public Composite getComposite() {
+        Composite c = graphics.getComposite();
         update_gl();
-        return null;
+        return c;
     }
 
     @Override
     public void setBackground(Color color) {
+        graphics.setBackground(color);
         update_gl();
     }
 
     @Override
     public Color getBackground() {
+        Color c = graphics.getBackground();
         update_gl();
-        return null;
+        return c;
     }
 
     @Override
     public Stroke getStroke() {
+        Stroke s = graphics.getStroke();
         update_gl();
-        return null;
+        return s;
     }
 
     @Override
     public void clip(Shape s) {
+        graphics.clip(s);
         update_gl();
     }
 
     @Override
     public FontRenderContext getFontRenderContext() {
+        FontRenderContext frc = graphics.getFontRenderContext();
         update_gl();
-        return null;
+        return frc;
     }
 
     @Override
     public Graphics create() {
-        update_gl();
-        return null;
+        return new OpenGLGraphics(this);
     }
 
     @Override
     public Color getColor() {
+        Color c = graphics.getColor();
         update_gl();
-        return null;
+        return c;
     }
 
     @Override
     public void setColor(Color c) {
+        graphics.setColor(c);
         update_gl();
     }
 
