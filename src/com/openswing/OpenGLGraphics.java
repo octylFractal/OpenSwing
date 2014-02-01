@@ -513,8 +513,10 @@ public class OpenGLGraphics extends Graphics2D {
     }
 
     public void update_gl() {
-        currentTex.kill();
-        currentTex = null;
+        if (currentTex != null) {
+            currentTex.kill();
+            currentTex = null;
+        }
         if (renderer == null) {
             throw new IllegalStateException("Graphics disposed");
         }
