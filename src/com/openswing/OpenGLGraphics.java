@@ -449,49 +449,59 @@ public class OpenGLGraphics extends Graphics2D {
 
     @Override
     public void fillPolygon(int[] xPoints, int[] yPoints, int nPoints) {
+        graphics.fillPolygon(xPoints, yPoints, nPoints);
         update_gl();
     }
 
     @Override
     public boolean drawImage(Image img, int x, int y, ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, x, y, observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
     public boolean drawImage(Image img, int x, int y, int width, int height,
             ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, x, y, width, height, observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
     public boolean drawImage(Image img, int x, int y, Color bgcolor,
             ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, x, y, bgcolor, observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
     public boolean drawImage(Image img, int x, int y, int width, int height,
             Color bgcolor, ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, x, y, width, height, bgcolor,
+                observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
     public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2,
             int sx1, int sy1, int sx2, int sy2, ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1,
+                sx2, sy2, observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
     public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2,
             int sx1, int sy1, int sx2, int sy2, Color bgcolor,
             ImageObserver observer) {
+        boolean ret = graphics.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1,
+                sx2, sy2, bgcolor, observer);
         update_gl();
-        return false;
+        return ret;
     }
 
     @Override
