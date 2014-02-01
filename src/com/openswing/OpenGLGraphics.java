@@ -309,119 +309,141 @@ public class OpenGLGraphics extends Graphics2D {
 
     @Override
     public void setPaintMode() {
+        graphics.setPaintMode();
         update_gl();
     }
 
     @Override
     public void setXORMode(Color c1) {
+        graphics.setXORMode(c1);
         update_gl();
     }
 
     @Override
     public Font getFont() {
+        Font f = graphics.getFont();
         update_gl();
-        return null;
+        return f;
     }
 
     @Override
     public void setFont(Font font) {
+        graphics.setFont(font);
         update_gl();
     }
 
     @Override
     public FontMetrics getFontMetrics(Font f) {
+        FontMetrics fm = graphics.getFontMetrics();
         update_gl();
-        return null;
+        return fm;
     }
 
     @Override
     public Rectangle getClipBounds() {
+        Rectangle r = graphics.getClipBounds();
         update_gl();
-        return null;
+        return r;
     }
 
     @Override
     public void clipRect(int x, int y, int width, int height) {
+        graphics.clipRect(x, y, width, height);
         update_gl();
     }
 
     @Override
     public void setClip(int x, int y, int width, int height) {
+        graphics.setClip(x, y, width, height);
         update_gl();
     }
 
     @Override
     public Shape getClip() {
+        Shape s = graphics.getClip();
         update_gl();
-        return null;
+        return s;
     }
 
     @Override
     public void setClip(Shape clip) {
+        graphics.setClip(clip);
         update_gl();
     }
 
     @Override
     public void copyArea(int x, int y, int width, int height, int dx, int dy) {
+        graphics.copyArea(x, y, width, height, dx, dy);
         update_gl();
     }
 
     @Override
     public void drawLine(int x1, int y1, int x2, int y2) {
+        graphics.drawLine(x1, y1, x2, y2);
         update_gl();
     }
 
     @Override
     public void fillRect(int x, int y, int width, int height) {
+        graphics.fillRect(x, y, width, height);
         update_gl();
     }
 
     @Override
     public void clearRect(int x, int y, int width, int height) {
+        graphics.clearRect(x, y, width, height);
         update_gl();
     }
 
     @Override
     public void drawRoundRect(int x, int y, int width, int height,
             int arcWidth, int arcHeight) {
+        graphics.drawRoundRect(x, y, width, height, arcWidth, arcHeight);
         update_gl();
     }
 
     @Override
     public void fillRoundRect(int x, int y, int width, int height,
             int arcWidth, int arcHeight) {
+        graphics.fillRoundRect(x, y, width, height, arcWidth, arcHeight);
         update_gl();
     }
 
     @Override
     public void drawOval(int x, int y, int width, int height) {
+        graphics.drawOval(x, y, width, height);
         update_gl();
     }
 
     @Override
     public void fillOval(int x, int y, int width, int height) {
+        graphics.fillOval(x, y, width, height);
         update_gl();
     }
 
     @Override
     public void drawArc(int x, int y, int width, int height, int startAngle,
             int arcAngle) {
+        graphics.drawArc(x, y, width, height, startAngle, arcAngle);
         update_gl();
     }
 
     @Override
     public void fillArc(int x, int y, int width, int height, int startAngle,
             int arcAngle) {
+        graphics.fillArc(x, y, width, height, startAngle, arcAngle);
         update_gl();
     }
 
     @Override
     public void drawPolyline(int[] xPoints, int[] yPoints, int nPoints) {
+        graphics.drawPolyline(xPoints, yPoints, nPoints);
         update_gl();
     }
 
     @Override
     public void drawPolygon(int[] xPoints, int[] yPoints, int nPoints) {
+        graphics.drawPolygon(xPoints, yPoints, nPoints);
         update_gl();
     }
 
