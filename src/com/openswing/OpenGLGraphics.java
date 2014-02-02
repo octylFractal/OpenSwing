@@ -40,8 +40,8 @@ public class OpenGLGraphics extends Graphics2D {
         swingData = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_ARGB);
         graphics = swingData.createGraphics();
-        renderer = Shapes.getQuad(new VertexData().setXYZ(0, height, 0),
-                new VertexData().setXYZ(width, 0, 0), Shapes.XY);
+        renderer = Shapes.getQuad(new VertexData().setXYZ(0, 0, 0),
+                new VertexData().setXYZ(width, height, 0), Shapes.XY);
         update_gl();
     }
 
@@ -50,8 +50,8 @@ public class OpenGLGraphics extends Graphics2D {
                 .getHeight();
         swingData = new BufferedImage(width, height, copy.swingData.getType());
         graphics = swingData.createGraphics();
-        renderer = Shapes.getQuad(new VertexData().setXYZ(0, height, 0),
-                new VertexData().setXYZ(width, 0, 0), Shapes.XY);
+        renderer = Shapes.getQuad(new VertexData().setXYZ(0, 0, 0),
+                new VertexData().setXYZ(width, height, 0), Shapes.XY);
         drawImage(copy.swingData, 0, 0, null);
     }
 
@@ -126,45 +126,38 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public boolean hit(Rectangle rect, Shape s, boolean onStroke) {
         boolean hit = graphics.hit(rect, s, onStroke);
-        update_gl();
         return hit;
     }
 
     @Override
     public GraphicsConfiguration getDeviceConfiguration() {
         GraphicsConfiguration g = graphics.getDeviceConfiguration();
-        update_gl();
         return g;
     }
 
     @Override
     public void setComposite(Composite comp) {
         graphics.setComposite(comp);
-        update_gl();
     }
 
     @Override
     public void setPaint(Paint paint) {
         graphics.setPaint(paint);
-        update_gl();
     }
 
     @Override
     public void setStroke(Stroke s) {
         graphics.setStroke(s);
-        update_gl();
     }
 
     @Override
     public void setRenderingHint(Key hintKey, Object hintValue) {
         graphics.setRenderingHint(hintKey, hintValue);
-        update_gl();
     }
 
     @Override
     public Object getRenderingHint(Key hintKey) {
         Object hint = graphics.getRenderingHint(hintKey);
-        update_gl();
         return hint;
     }
 
@@ -177,13 +170,11 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public void addRenderingHints(Map<?, ?> hints) {
         graphics.addRenderingHints(hints);
-        update_gl();
     }
 
     @Override
     public RenderingHints getRenderingHints() {
         RenderingHints hints = graphics.getRenderingHints();
-        update_gl();
         return hints;
     }
 
@@ -238,41 +229,35 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public AffineTransform getTransform() {
         AffineTransform t = graphics.getTransform();
-        update_gl();
         return t;
     }
 
     @Override
     public Paint getPaint() {
         Paint p = graphics.getPaint();
-        update_gl();
         return p;
     }
 
     @Override
     public Composite getComposite() {
         Composite c = graphics.getComposite();
-        update_gl();
         return c;
     }
 
     @Override
     public void setBackground(Color color) {
         graphics.setBackground(color);
-        update_gl();
     }
 
     @Override
     public Color getBackground() {
         Color c = graphics.getBackground();
-        update_gl();
         return c;
     }
 
     @Override
     public Stroke getStroke() {
         Stroke s = graphics.getStroke();
-        update_gl();
         return s;
     }
 
@@ -285,7 +270,6 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public FontRenderContext getFontRenderContext() {
         FontRenderContext frc = graphics.getFontRenderContext();
-        update_gl();
         return frc;
     }
 
@@ -297,52 +281,44 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public Color getColor() {
         Color c = graphics.getColor();
-        update_gl();
         return c;
     }
 
     @Override
     public void setColor(Color c) {
         graphics.setColor(c);
-        update_gl();
     }
 
     @Override
     public void setPaintMode() {
         graphics.setPaintMode();
-        update_gl();
     }
 
     @Override
     public void setXORMode(Color c1) {
         graphics.setXORMode(c1);
-        update_gl();
     }
 
     @Override
     public Font getFont() {
         Font f = graphics.getFont();
-        update_gl();
         return f;
     }
 
     @Override
     public void setFont(Font font) {
         graphics.setFont(font);
-        update_gl();
     }
 
     @Override
     public FontMetrics getFontMetrics(Font f) {
         FontMetrics fm = graphics.getFontMetrics();
-        update_gl();
         return fm;
     }
 
     @Override
     public Rectangle getClipBounds() {
         Rectangle r = graphics.getClipBounds();
-        update_gl();
         return r;
     }
 
@@ -361,7 +337,6 @@ public class OpenGLGraphics extends Graphics2D {
     @Override
     public Shape getClip() {
         Shape s = graphics.getClip();
-        update_gl();
         return s;
     }
 
@@ -520,7 +495,10 @@ public class OpenGLGraphics extends Graphics2D {
         if (renderer == null) {
             throw new IllegalStateException("Graphics disposed");
         }
+        System.err.println("iupadted");
+        graphics.dispose();
         currentTex = new BufferedTexture(swingData);
+        graphics = swingData.createGraphics();
         renderer.setTexture(currentTex);
     }
 

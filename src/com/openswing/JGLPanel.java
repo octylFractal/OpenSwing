@@ -24,7 +24,6 @@ public class JGLPanel extends JPanel {
      */
     public JGLPanel(JComponent contents) {
         super(contents.getLayout(), contents.isDoubleBuffered());
-        System.err.println(contents.getSize());
         setSize(contents.getSize());
         setPreferredSize(contents.getPreferredSize());
         setMaximumSize(contents.getMaximumSize());
@@ -70,6 +69,14 @@ public class JGLPanel extends JPanel {
         graph.fillRect(0, 0, getWidth(), getHeight());
         graph.setColor(pre);
         return graph;
+    }
+
+    @Override
+    public void setBackground(Color bg) {
+        super.setBackground(bg);
+        if (graph != null) {
+            graph.setBackground(bg);
+        }
     }
 
     public void draw_gl() {
