@@ -484,7 +484,10 @@ public class OpenGLGraphics extends Graphics2D {
         graphics.dispose();
         renderer.destroy();
         renderer = null;
-        update_gl();
+        try {
+            update_gl();
+        } catch (IllegalStateException ise) {
+        }
     }
 
     public void update_gl() {
@@ -495,7 +498,6 @@ public class OpenGLGraphics extends Graphics2D {
         if (renderer == null) {
             throw new IllegalStateException("Graphics disposed");
         }
-        System.err.println("iupadted");
         graphics.dispose();
         currentTex = new BufferedTexture(swingData);
         graphics = swingData.createGraphics();
